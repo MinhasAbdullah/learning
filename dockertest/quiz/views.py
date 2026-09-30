@@ -64,7 +64,7 @@ class JobViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         company = serializer.validated_data.get('company')
         if company.owner != self.request.user:
-            raise PermissionDenied("You do not have permission to create a job for this company.")
+            raise PermissionDenied("You do not have permission to create a job for this Company.")
         serializer.save()
 
     @action(detail=True, methods=['post'], permission_classes=[permissions.IsAuthenticated])
