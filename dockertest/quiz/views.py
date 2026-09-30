@@ -8,6 +8,8 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from .pagination import JobPagination, ApplicationPagination
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.throttling import ScopedRateThrottle
+from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 
 
 User = get_user_model()

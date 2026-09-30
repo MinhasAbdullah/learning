@@ -3,3 +3,4 @@ from .models import Job, Company, Application, Tag, User
 
 
 admin.site.register(User)
+admin.site.register(Tag)   
