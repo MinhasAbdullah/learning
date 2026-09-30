@@ -79,7 +79,7 @@ class JobViewSet(viewsets.ModelViewSet):
     def applications(self, request, pk=None):
         job = self.get_object()
         if job.company.owner != request.user:
-            raise PermissionDenied("Only the company owner can view applications for this job.")
+            raise PermissionDenied("Only the company owner can view applications for this Job.")
         applications = job.applications.select_related('applicant', 'job').all()
         serializer = ApplicationSerializer(applications, many=True)
         return Response(serializer.data)
