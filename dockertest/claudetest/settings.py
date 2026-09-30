@@ -137,6 +137,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_EXCEPTION_HANDLER': 'quiz.exceptions.custom_exception_handler',
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
@@ -150,5 +151,6 @@ REST_FRAMEWORK = {
         'register': '5/day',
         'login': '10/day',
     }
+    
 
 }

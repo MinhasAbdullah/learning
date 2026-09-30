@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.throttling import ScopedRateThrottle
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
+from .exceptions import AlreadyAplliedException
 
 
 User = get_user_model()
@@ -70,7 +71,7 @@ class JobViewSet(viewsets.ModelViewSet):
     def apply(self, request, pk=None):
         job = self.get_object()
         if Application.objects.filter(job=job, applicant=request.user).exists():
-            raise ValidationError({"detail": "You have already applied for this job."})
+            raise AlreadyAplliedException()
         application = Application.objects.create(job=job, applicant=request.user)
         return Response({'status': 'application submitted', 'application_id': application.id})
 
